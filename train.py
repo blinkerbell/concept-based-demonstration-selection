@@ -145,6 +145,8 @@ if __name__=='__main__':
 
     # Create a Windows-compatible timestamp for the log filename
     timestamp = datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d_%H-%M-%S')
+    if not os.path.exists(args.log_dir):
+        os.makedirs(args.log_dir)
     log_file = os.path.join(args.log_dir, timestamp)
     handlers = [logging.StreamHandler(), logging.FileHandler(log_file)]
 
