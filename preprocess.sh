@@ -19,20 +19,5 @@ cd preprocess
 huggingface-cli login --token="xyz" # data is proprietary and therefore not publicly accessible 
 python run_liability.py --k 4 # adjust k as needed
 
-# Quick utf-8 fix for the JSONL files in data/liability
-cd ../data/liability
-python -c '
-import json
-import glob
-
-for fname in glob.glob("*.jsonl"):
-    with open(fname, "r", encoding="utf-8") as f:
-        lines = f.readlines()
-    with open(fname, "w", encoding="utf-8") as f:
-        for line in lines:
-            obj = json.loads(line)
-            f.write(json.dumps(obj, ensure_ascii=False) + "\n")
-'
-
 # back to main directory
-cd ../..
+cd ..
