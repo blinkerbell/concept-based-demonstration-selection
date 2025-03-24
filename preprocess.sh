@@ -1,5 +1,5 @@
 # enable virtual environment (as proposed in the original README)
-source "env\Scripts\activate"
+source "..\env\Scripts\activate"
 
 # Generate random seed
 cd config
