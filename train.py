@@ -143,8 +143,9 @@ if __name__=='__main__':
 
     args = parser.parse_args()
 
-    handlers = [logging.StreamHandler()]
-    log_file = os.path.join(args.log_dir, datetime.fromtimestamp(time.time()).isoformat())
+    # Create a Windows-compatible timestamp for the log filename
+    timestamp = datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d_%H-%M-%S')
+    log_file = os.path.join(args.log_dir, timestamp)
     handlers = [logging.StreamHandler(), logging.FileHandler(log_file)]
 
     logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
