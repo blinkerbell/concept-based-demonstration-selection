@@ -1,5 +1,5 @@
-TRAIN_METHOD=channel
-TEST_METHOD=channel
+TRAIN_METHOD=direct
+TEST_METHOD=direct
 LR=1e-2
 N_PREFIX=10
 DATASET=liability
