@@ -119,12 +119,8 @@ def main(logger, args):
         dev_counter = Counter()
         for dp in train_data:
             train_counter[dp["task"]] += 1
-            output = dp["output"]
-            dp["options"] = [output, "dummy_option"]
         for dp in dev_data:
             dev_counter[dp["task"]] += 1
-            output = dp["output"]
-            dp["options"] = [output, "dummy_option"]
         for k, v in train_counter.items():
             logger.info("[Train] %s\t%d" % (k, v))
         for k, v in dev_counter.items():
