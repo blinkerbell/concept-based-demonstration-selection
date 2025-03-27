@@ -681,7 +681,7 @@ if __name__=='__main__':
                 "gpt3-ada", "gpt3-babbage", "gpt3-curie", "gpt3-davinci", 
                 "gpt3-text-ada-001", "gpt3-text-babbage-001", "gpt3-text-curie-001", 
                 "gpt3-text-davinci-001", "gpt3-text-davinci-002", 
-                "gpt3-code-davinci-002", "gpt3-text-davinci-003"])
+                "gpt3-code-davinci-002", "gpt3-text-davinci-003", "kkirchheim/german-gpt2-medium"])
     parser.add_argument("--api", type=str, default=None)
 
     parser.add_argument("--test_size", type=int, default=1000)
