@@ -683,6 +683,10 @@ if __name__=='__main__':
                 "gpt3-text-davinci-001", "gpt3-text-davinci-002", 
                 "gpt3-code-davinci-002", "gpt3-text-davinci-003", "kkirchheim/german-gpt2-medium"])
     parser.add_argument("--api", type=str, default=None)
+    parser.add_argument("--use_instruction", default=False, action="store_true")
+    parser.add_argument("--use_fixed_val", default=False, action="store_true")
+    parser.add_argument("--unseen_domain_only", default=False, action="store_true")
+
 
     parser.add_argument("--test_size", type=int, default=1000)
     parser.add_argument("--train_size", type=int, default=100)
@@ -699,7 +703,7 @@ if __name__=='__main__':
     log_file = os.path.join(args.log_dir, timestamp)
     handlers = [logging.StreamHandler(), logging.FileHandler(log_file)]
 
-    logging.basicConfig(format='%(asctime)s - %(levellevelname)s - %(name)s - %(message)s',
+    logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                         datefmt='%m/%d/%Y %H:%M:%S',
                         level=logging.INFO,
                         handlers=handlers)
