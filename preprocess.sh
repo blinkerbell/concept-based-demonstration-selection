@@ -16,7 +16,7 @@ rm -r -f data
 
 # Download and preprocess the data
 cd preprocess
-huggingface-cli login --token="xyz" # data is proprietary and therefore not publicly accessible 
+#huggingface-cli login --token="xyz"
 python run_liability.py --k 4 # adjust k as needed
 
 # back to main directory
