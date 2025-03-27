@@ -695,10 +695,11 @@ if __name__=='__main__':
     args = parser.parse_args()
     
     os.makedirs(args.log_dir, exist_ok=True)
-    log_file = os.path.join(args.log_dir, datetime.fromtimestamp(time.time()).isoformat())
+    timestamp = datetime.fromtimestamp(time.time()).isoformat().replace(':', '-')
+    log_file = os.path.join(args.log_dir, timestamp)
     handlers = [logging.StreamHandler(), logging.FileHandler(log_file)]
 
-    logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
+    logging.basicConfig(format='%(asctime)s - %(levellevelname)s - %(name)s - %(message)s',
                         datefmt='%m/%d/%Y %H:%M:%S',
                         level=logging.INFO,
                         handlers=handlers)
