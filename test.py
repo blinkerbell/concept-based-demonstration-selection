@@ -23,7 +23,7 @@ from collections import Counter, defaultdict
 
 from metaicl.data import MetaICLData
 from metaicl.model import MetaICLModel
-from gpt3 import GPT3Model
+#from gpt3 import GPT3Model
 
 from utils.data import load_data
 
