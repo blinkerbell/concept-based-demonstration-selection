@@ -218,7 +218,7 @@ def main(logger, args):
                             
                             logger.info("start running soft prefix model")
                             start_time = time.time()
-                            concept_model = MetaICLModel("gpt2-large", 
+                            concept_model = MetaICLModel(args.gpt, 
                                 logger, args.out_dir, soft_prefix=True, 
                                 n_tokens=args.n_prefix_tokens,
                                 prefix_embed_file=args.prefix_embed_file, 
@@ -226,7 +226,7 @@ def main(logger, args):
                             concept_model.cuda()
                             concept_model.eval()        
 
-                            concept_data = MetaICLData(logger, "gpt2-large", 
+                            concept_data = MetaICLData(logger, args.gpt, 
                                 args.method, False, args.use_instruction, args.k,
                                 max_length, max_length_per_example, 
                                 add_newlines=add_newlines, 
@@ -283,7 +283,7 @@ def main(logger, args):
                                 assert args.prefix_embed_file is not None
                                 logger.info("start running soft prefix model")
                                 start_time = time.time()
-                                concept_model = MetaICLModel("gpt2-large", 
+                                concept_model = MetaICLModel(args.gpt, 
                                     logger, args.out_dir, soft_prefix=True, 
                                     n_tokens=args.n_prefix_tokens,
                                     prefix_embed_file=args.prefix_embed_file, 
@@ -291,7 +291,7 @@ def main(logger, args):
                                 concept_model.cuda()
                                 concept_model.eval()        
 
-                                concept_data = MetaICLData(logger, "gpt2-large", 
+                                concept_data = MetaICLData(logger, args.gpt, 
                                     args.method, False, args.use_instruction, args.k,
                                     max_length, max_length_per_example, 
                                     add_newlines=add_newlines, 
@@ -391,7 +391,7 @@ def main(logger, args):
                             else:
                                 logger.info("start running soft prefix model")
                                 start_time = time.time()
-                                concept_model = MetaICLModel("gpt2-large", 
+                                concept_model = MetaICLModel(args.gpt, 
                                     logger, args.out_dir, soft_prefix=True, 
                                     n_tokens=args.n_prefix_tokens,
                                     prefix_embed_file=args.prefix_embed_file, 
@@ -399,7 +399,7 @@ def main(logger, args):
                                 concept_model.cuda()
                                 concept_model.eval()
 
-                                concept_data = MetaICLData(logger, "gpt2-large", 
+                                concept_data = MetaICLData(logger, args.gpt, 
                                     args.method, True, args.use_instruction, args.k,
                                     max_length, max_length_per_example, 
                                     add_newlines=add_newlines, 
@@ -446,7 +446,7 @@ def main(logger, args):
                                 curr_prefix_p_path = os.path.join(args.concept_dir, 
                                     "prefix", f"{task}-p-{seed}.npy")
 
-                                concept_model = MetaICLModel("gpt2-large", 
+                                concept_model = MetaICLModel(args.gpt, 
                                     logger, args.out_dir, soft_prefix=True, 
                                     n_tokens=args.n_prefix_tokens,
                                     prefix_embed_file=args.prefix_embed_file, 
@@ -459,7 +459,7 @@ def main(logger, args):
                                     all_nll = np.load(curr_nll_path)
                                 else:
                                     start_time = time.time()
-                                    concept_data = MetaICLData(logger, "gpt2-large", 
+                                    concept_data = MetaICLData(logger, args.gpt, 
                                         args.method, True, args.use_instruction, args.k,
                                         max_length, max_length_per_example, 
                                         add_newlines=add_newlines, 
