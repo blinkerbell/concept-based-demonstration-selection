@@ -509,7 +509,7 @@ def main(logger, args):
                 for i in demo_ids:
                     demonstrations.append(curr_train_data[i])
                 #Save demonstrations to file
-                demo_file_path = f"data/{test_task}_demonstrations.pkl"
+                demo_file_path = f"data/{test_task}/demonstrations.pkl"
                 with open(demo_file_path, 'wb') as f:
                     pkl.dump(demonstrations, f)
                 logger.info(f"Saved demonstrations to {demo_file_path}")
