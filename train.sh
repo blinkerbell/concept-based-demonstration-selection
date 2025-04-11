@@ -9,6 +9,7 @@ SEED=$(python -c "import json; print(json.load(open('config/random_seed.json'))[
 MODEL="kkirchheim/german-gpt2-medium"
 CUDA_VISIBLE_DEVICES=0 python train.py\
     --gpt2 $MODEL\
+    --seed $SEED\
     --task $TASK\
     --split $SPLIT\
     --method $METHOD\
