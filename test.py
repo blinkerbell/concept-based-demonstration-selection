@@ -508,6 +508,11 @@ def main(logger, args):
                 demonstrations = []
                 for i in demo_ids:
                     demonstrations.append(curr_train_data[i])
+                #Save demonstrations to file
+                demo_file_path = f"data/{test_task}/demonstrations.pkl"
+                with open(demo_file_path, 'wb') as f:
+                    pkl.dump(demonstrations, f)
+                logger.info(f"Saved demonstrations to {demo_file_path}")
                 if len(demo_ids) != args.k:
                     demo_ids = np.reshape(demo_ids, (args.test_size, args.k))
 
