@@ -49,4 +49,4 @@ CUDA_VISIBLE_DEVICES=0 python test.py\
     --concept_dir concept_likelihood/$MODEL/$TRAIN_TASK-$SPLIT-$TRAIN_SIZE/$DATASET-$TRAIN_METHOD-prefix=$N_PREFIX-lr=$LR-$STEP\
     --prefix_embed_file checkpoints/$MODEL/$TRAIN_TASK-$SPLIT/prefix={$N_PREFIX}-{$TRAIN_METHOD}-lr={$LR}-initByVocab/soft_embeddings-$STEP.pt\
     --prior easiest\
-    --reorder\
+    --reorder
