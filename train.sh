@@ -18,4 +18,4 @@ CUDA_VISIBLE_DEVICES=0 python train.py\
     --batch_size $BATCH\
     --lr $LR\
     --n_prefix_tokens $N_PREFIX\
-    --num_training_steps $STEP\
+    --num_training_steps $STEP
