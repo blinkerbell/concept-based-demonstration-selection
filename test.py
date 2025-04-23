@@ -23,7 +23,7 @@ from collections import Counter, defaultdict
 
 from metaicl.data import MetaICLData
 from metaicl.model import MetaICLModel
-from gpt3 import GPT3Model
+#from gpt3 import GPT3Model
 
 from utils.data import load_data
 
@@ -218,7 +218,7 @@ def main(logger, args):
                             
                             logger.info("start running soft prefix model")
                             start_time = time.time()
-                            concept_model = MetaICLModel("gpt2-large", 
+                            concept_model = MetaICLModel(args.gpt, 
                                 logger, args.out_dir, soft_prefix=True, 
                                 n_tokens=args.n_prefix_tokens,
                                 prefix_embed_file=args.prefix_embed_file, 
@@ -226,7 +226,7 @@ def main(logger, args):
                             concept_model.cuda()
                             concept_model.eval()        
 
-                            concept_data = MetaICLData(logger, "gpt2-large", 
+                            concept_data = MetaICLData(logger, args.gpt, 
                                 args.method, False, args.use_instruction, args.k,
                                 max_length, max_length_per_example, 
                                 add_newlines=add_newlines, 
@@ -283,7 +283,7 @@ def main(logger, args):
                                 assert args.prefix_embed_file is not None
                                 logger.info("start running soft prefix model")
                                 start_time = time.time()
-                                concept_model = MetaICLModel("gpt2-large", 
+                                concept_model = MetaICLModel(args.gpt, 
                                     logger, args.out_dir, soft_prefix=True, 
                                     n_tokens=args.n_prefix_tokens,
                                     prefix_embed_file=args.prefix_embed_file, 
@@ -291,7 +291,7 @@ def main(logger, args):
                                 concept_model.cuda()
                                 concept_model.eval()        
 
-                                concept_data = MetaICLData(logger, "gpt2-large", 
+                                concept_data = MetaICLData(logger, args.gpt, 
                                     args.method, False, args.use_instruction, args.k,
                                     max_length, max_length_per_example, 
                                     add_newlines=add_newlines, 
@@ -391,7 +391,7 @@ def main(logger, args):
                             else:
                                 logger.info("start running soft prefix model")
                                 start_time = time.time()
-                                concept_model = MetaICLModel("gpt2-large", 
+                                concept_model = MetaICLModel(args.gpt, 
                                     logger, args.out_dir, soft_prefix=True, 
                                     n_tokens=args.n_prefix_tokens,
                                     prefix_embed_file=args.prefix_embed_file, 
@@ -399,7 +399,7 @@ def main(logger, args):
                                 concept_model.cuda()
                                 concept_model.eval()
 
-                                concept_data = MetaICLData(logger, "gpt2-large", 
+                                concept_data = MetaICLData(logger, args.gpt, 
                                     args.method, True, args.use_instruction, args.k,
                                     max_length, max_length_per_example, 
                                     add_newlines=add_newlines, 
@@ -446,7 +446,7 @@ def main(logger, args):
                                 curr_prefix_p_path = os.path.join(args.concept_dir, 
                                     "prefix", f"{task}-p-{seed}.npy")
 
-                                concept_model = MetaICLModel("gpt2-large", 
+                                concept_model = MetaICLModel(args.gpt, 
                                     logger, args.out_dir, soft_prefix=True, 
                                     n_tokens=args.n_prefix_tokens,
                                     prefix_embed_file=args.prefix_embed_file, 
@@ -459,7 +459,7 @@ def main(logger, args):
                                     all_nll = np.load(curr_nll_path)
                                 else:
                                     start_time = time.time()
-                                    concept_data = MetaICLData(logger, "gpt2-large", 
+                                    concept_data = MetaICLData(logger, args.gpt, 
                                         args.method, True, args.use_instruction, args.k,
                                         max_length, max_length_per_example, 
                                         add_newlines=add_newlines, 
@@ -502,10 +502,13 @@ def main(logger, args):
                         args.test_size*args.k)
 
                 demonstrations = []
+                demonstrations_path = os.path.join(args.concept_dir, 
+                                    "demonstrations", f"{task}-p-{seed}.npy")
                 for i in demo_ids:
                     demonstrations.append(curr_train_data[i])
                 if len(demo_ids) != args.k:
                     demo_ids = np.reshape(demo_ids, (args.test_size, args.k))
+                np.save(demonstrations_path, demonstrations)
 
                 if args.use_random_english_words:
                     # create a mapping
@@ -681,7 +684,7 @@ if __name__=='__main__':
                 "gpt3-ada", "gpt3-babbage", "gpt3-curie", "gpt3-davinci", 
                 "gpt3-text-ada-001", "gpt3-text-babbage-001", "gpt3-text-curie-001", 
                 "gpt3-text-davinci-001", "gpt3-text-davinci-002", 
-                "gpt3-code-davinci-002", "gpt3-text-davinci-003"])
+                "gpt3-code-davinci-002", "gpt3-text-davinci-003", "kkirchheim/german-gpt2-medium"])
     parser.add_argument("--api", type=str, default=None)
 
     parser.add_argument("--test_size", type=int, default=1000)
