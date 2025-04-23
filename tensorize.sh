@@ -1,9 +1,11 @@
-METHOD=channel
+METHOD=direct
 N_PREFIX=10
 TASK=tune
 SPLIT=train
-CUDA_VISIBLE_DEVICES=5 python train.py\
+MODEL="kkirchheim/german-gpt2-medium"
+CUDA_VISIBLE_DEVICES=0 python train.py\
   --task $TASK\
+  --gpt2 $MODEL\
   --split $SPLIT\
   --tensorize_dir tensorized\
   --seed 100\
