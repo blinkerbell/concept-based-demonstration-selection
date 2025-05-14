@@ -13,7 +13,7 @@ CUDA_VISIBLE_DEVICES=0 python test.py\
     --dataset $DATASET\
     --gpt $MODEL\
     --method $TEST_METHOD\
-    --test_batch_size 64\
+    --test_batch_size 80\
     --out_dir out/$MODEL\
     --k $K\
     --embedding_dir embeddings/\
