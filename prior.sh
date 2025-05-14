@@ -7,7 +7,7 @@ TRAIN_TASK=tune
 SPLIT=train
 MODEL="kkirchheim/german-gpt2-medium"
 TRAIN_SIZE=0
-STEP=100000
+STEP=516
 K=100
 CUDA_VISIBLE_DEVICES=0 python test.py\
     --dataset $DATASET\
