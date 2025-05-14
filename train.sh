@@ -12,7 +12,7 @@ CUDA_VISIBLE_DEVICES=0 python train.py\
     --n_gpu 1\
     --tensorize_dir tensorized\
     --out_dir checkpoints/$MODEL/$TASK-$SPLIT/prefix={$N_PREFIX}-{$METHOD}-lr={$LR}-initByVocab\
-    --batch_size 64\
+    --batch_size 80\
     --lr $LR\
     --n_prefix_tokens $N_PREFIX\
-    --num_training_steps 100000\
+    --num_training_steps 516\ # (4126 samples * 10 epochs) / 80 = 516 steps
