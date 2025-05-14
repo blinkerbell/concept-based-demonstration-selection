@@ -694,6 +694,8 @@ if __name__=='__main__':
         choices=['all-mpnet-base-v2'])
     parser.add_argument("--similarity_temperature", type=float, default=1.0)
     parser.add_argument("--concept_temperature", type=float, default=10.0)
+    parser.add_argument("--use_instruction", default=False, action="store_true")
+    parser.add_argument("--unseen_domain_only", default=False, action="store_true")
 
     args = parser.parse_args()
     
