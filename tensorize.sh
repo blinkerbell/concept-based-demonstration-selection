@@ -13,4 +13,4 @@ CUDA_VISIBLE_DEVICES=0 python train.py\
   --n_prefix_tokens $N_PREFIX\
   --do_tensorize\
   --n_gpu 1\
-  --n_process 10\
+  --n_process 10
