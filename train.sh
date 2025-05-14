@@ -15,4 +15,4 @@ CUDA_VISIBLE_DEVICES=0 python train.py\
     --batch_size 80\
     --lr $LR\
     --n_prefix_tokens $N_PREFIX\
-    --num_training_steps 516\ # (4126 samples * 10 epochs) / 80 = 516 steps
+    --num_training_steps 516 # (4126 samples * 10 epochs) / 80 = 516 steps
