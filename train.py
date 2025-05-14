@@ -78,7 +78,7 @@ def main(logger, args):
         torch.cuda.manual_seed_all(args.train_seed)
 
     num_training_steps = args.num_training_steps
-    save_period = 1000
+    save_period = 100
     log_period = 100
 
     if args.no_masking:
@@ -143,7 +143,9 @@ if __name__=='__main__':
 
     args = parser.parse_args()
 
-    handlers = [logging.StreamHandler()]
+    if not os.path.exists(args.log_dir):
+      os.makedirs(args.log_dir)
+
     log_file = os.path.join(args.log_dir, datetime.fromtimestamp(time.time()).isoformat())
     handlers = [logging.StreamHandler(), logging.FileHandler(log_file)]
 
