@@ -503,7 +503,7 @@ def main(logger, args):
 
                 demonstrations = []
                 demonstrations_path = os.path.join(args.concept_dir, 
-                                    "demonstrations", f"{task}-p-{seed}.npy")
+                                    "demonstrations", f"{args.task}-p-{seed}.npy")
                 for i in demo_ids:
                     demonstrations.append(curr_train_data[i])
                 if len(demo_ids) != args.k:
