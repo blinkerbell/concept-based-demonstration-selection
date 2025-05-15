@@ -508,6 +508,7 @@ def main(logger, args):
                     demonstrations.append(curr_train_data[i])
                 if len(demo_ids) != args.k:
                     demo_ids = np.reshape(demo_ids, (args.test_size, args.k))
+                os.makedirs(os.path.dirname(demonstrations_path), exist_ok=True)
                 np.save(demonstrations_path, demonstrations)
 
                 if args.use_random_english_words:
